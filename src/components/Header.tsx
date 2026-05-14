@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { Menu, X, ShoppingCart, Phone, Clock } from "lucide-react";
+import { Menu, X, ShoppingCart, Phone, Clock, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 interface HeaderProps {
-  onCartClick: () => void;
+  onCartClick?: () => void;
 }
 
 const Header = ({ onCartClick }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalItems } = useCart();
+  const { user, profile } = useAuth();
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Menu", href: "#menu" },
-    { name: "Stores", href: "#stores" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Menu", href: "/#menu" },
+    { name: "Stores", href: "/#stores" },
+    { name: "Gallery", href: "/#gallery" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -36,16 +39,21 @@ const Header = ({ onCartClick }: HeaderProps) => {
               11:00 AM - 03:00 AM
             </span>
           </div>
-          <span className="text-primary font-medium">Free Delivery on orders above ₹200</span>
+          <div className="flex items-center gap-4">
+            <span className="text-primary font-medium">Free Delivery on orders above ₹200</span>
+            {user && !user.isAnonymous && (
+              <span className="text-foreground font-medium">Hello, {profile?.displayName || user.email}</span>
+            )}
+          </div>
         </div>
       </div>
 
       {/* Main header */}
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img src={logo} alt="Food Town" className="h-12 md:h-14 w-auto" />
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
@@ -60,21 +68,44 @@ const Header = ({ onCartClick }: HeaderProps) => {
           ))}
         </nav>
 
-        {/* Cart & Mobile Menu */}
+        {/* Auth, Cart & Mobile Menu */}
         <div className="flex items-center gap-3">
-          <Button
-            onClick={onCartClick}
-            variant="outline"
-            size="icon"
-            className="relative border-primary/30 hover:border-primary hover:bg-primary/10"
-          >
-            <ShoppingCart className="h-5 w-5 text-primary" />
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-bounce-in">
-                {totalItems}
-              </span>
-            )}
-          </Button>
+          {user && !user.isAnonymous ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => auth.signOut()}
+              className="hidden md:flex text-muted-foreground hover:text-destructive"
+            >
+              Logout
+            </Button>
+          ) : null}
+          
+          <Link to="/auth">
+            <Button
+              variant="outline"
+              size="icon"
+              className="border-primary/30 hover:border-primary hover:bg-primary/10"
+            >
+              <UserIcon className="h-5 w-5 text-primary" />
+            </Button>
+          </Link>
+
+          {onCartClick && (
+            <Button
+              onClick={onCartClick}
+              variant="outline"
+              size="icon"
+              className="relative border-primary/30 hover:border-primary hover:bg-primary/10"
+            >
+              <ShoppingCart className="h-5 w-5 text-primary" />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold animate-bounce-in">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
+          )}
 
           <Button
             variant="ghost"

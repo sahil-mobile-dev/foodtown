@@ -99,13 +99,15 @@ Thank you for ordering!`;
     try {
       // 1. Save to Firestore
       const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
-      const { db } = await import("@/lib/firebase");
+      const { db, auth } = await import("@/lib/firebase");
+      const user = auth.currentUser;
 
       await addDoc(collection(db, "orders"), {
         ...formData,
         items,
         totalPrice,
         status: "pending",
+        userId: user?.uid || "anonymous",
         createdAt: serverTimestamp(),
       });
 
