@@ -4,17 +4,17 @@ import { Button } from "@/components/ui/button";
 
 const slides = [
   {
-    title: "Delicious Food",
-    highlight: "Delivered Fast",
-    description: "From crispy sandwiches to cheesy pizzas, fresh burgers to refreshing mojitos — your favorite food is just a click away!",
-    badge: "Free Delivery within 1 km",
+    title: "Food Town",
+    highlight: "Late Night Service",
+    description: "Serving Ahmedabad's favorite street food from 11:00 AM to 03:00 AM. Freshly made with love, delivered fast!",
+    badge: "Open Till 3 AM",
     cta: { primary: "Order Now", secondary: "View Combos" },
   },
   {
     title: "Fresh Burgers",
-    highlight: "Made With Love",
-    description: "Juicy patties, fresh veggies, secret sauces — our burgers are crafted to perfection every single time.",
-    badge: "Best Seller",
+    highlight: "Aloo Tikki Special",
+    description: "Juicy patties, fresh veggies, and our secret Food Town sauces — our burgers are crafted to perfection.",
+    badge: "Bestseller",
     cta: { primary: "Try Our Burgers", secondary: "See Menu" },
   },
   {
@@ -25,11 +25,11 @@ const slides = [
     cta: { primary: "Enquire Now", secondary: "View Gallery" },
   },
   {
-    title: "Late Night",
-    highlight: "Cravings Sorted",
-    description: "Open till 3 AM! Satisfy your midnight hunger with our delicious menu — fresh and hot, any hour.",
-    badge: "Open Till 3 AM",
-    cta: { primary: "Order Now", secondary: "Check Timings" },
+    title: "Ahmedabadi Pizza",
+    highlight: "Cheesy Goodness",
+    description: "Try our signature Ahmedabadi Touch Pizza or the double-cheese Margherita. Freshly baked every time.",
+    badge: "Must Try",
+    cta: { primary: "Order Now", secondary: "See Menu" },
   },
 ];
 

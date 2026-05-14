@@ -8,6 +8,7 @@ interface UserProfile {
   email: string | null;
   displayName: string | null;
   role: "customer" | "admin";
+  adminRequested?: boolean;
   createdAt: any;
 }
 

@@ -5,6 +5,7 @@ import { useCart } from "@/context/CartContext";
 import { useAuth } from "@/context/AuthContext";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import { auth } from "@/lib/firebase";
 
 interface HeaderProps {
   onCartClick?: () => void;
@@ -42,7 +43,14 @@ const Header = ({ onCartClick }: HeaderProps) => {
           <div className="flex items-center gap-4">
             <span className="text-primary font-medium">Free Delivery on orders above ₹200</span>
             {user && !user.isAnonymous && (
-              <span className="text-foreground font-medium">Hello, {profile?.displayName || user.email}</span>
+              <div className="flex items-center gap-3">
+                <span className="text-foreground font-medium">Hello, {profile?.displayName || user.email}</span>
+                {profile?.adminRequested && profile?.role !== "admin" && (
+                  <span className="bg-amber-500/10 text-amber-500 text-[10px] px-2 py-0.5 rounded-full border border-amber-500/20 font-bold uppercase">
+                    Pending Admin
+                  </span>
+                )}
+              </div>
             )}
           </div>
         </div>
