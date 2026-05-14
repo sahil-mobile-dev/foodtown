@@ -70,16 +70,25 @@ const Header = ({ onCartClick }: HeaderProps) => {
 
         {/* Auth, Cart & Mobile Menu */}
         <div className="flex items-center gap-3">
-          {user && !user.isAnonymous ? (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => auth.signOut()}
-              className="hidden md:flex text-muted-foreground hover:text-destructive"
-            >
-              Logout
-            </Button>
-          ) : null}
+          {user && !user.isAnonymous && (
+            <div className="hidden md:flex gap-2">
+              {profile?.role === "admin" && (
+                <Link to="/admin">
+                  <Button variant="ghost" size="sm" className="text-primary font-bold">
+                    Dashboard
+                  </Button>
+                </Link>
+              )}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => auth.signOut()}
+                className="text-muted-foreground hover:text-destructive"
+              >
+                Logout
+              </Button>
+            </div>
+          )}
           
           <Link to="/auth">
             <Button
