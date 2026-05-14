@@ -5,6 +5,7 @@ export interface MenuItem {
   variants?: { name: string; price: number }[];
   price?: number;
   category: string;
+  tag?: "Bestseller" | "Must Try" | "New" | "Trending";
 }
 
 export interface MenuCategory {
@@ -22,7 +23,7 @@ export const menuData: MenuCategory[] = [
       { id: "s2", name: "Chutney Sandwich", category: "sandwiches", variants: [{ name: "Plain", price: 40 }, { name: "Grill", price: 50 }] },
       { id: "s3", name: "Vegetable Sandwich", category: "sandwiches", variants: [{ name: "Plain", price: 45 }, { name: "Grill", price: 60 }] },
       { id: "s4", name: "Aloo Mutter Sandwich", category: "sandwiches", variants: [{ name: "Plain", price: 45 }, { name: "Grill", price: 60 }] },
-      { id: "s5", name: "Cheese Sandwich", category: "sandwiches", variants: [{ name: "Plain", price: 75 }, { name: "Grill", price: 85 }] },
+      { id: "s5", name: "Cheese Sandwich", category: "sandwiches", variants: [{ name: "Plain", price: 75 }, { name: "Grill", price: 85 }], tag: "Bestseller" },
       { id: "s6", name: "Cheese Chutney", category: "sandwiches", variants: [{ name: "Plain", price: 80 }, { name: "Grill", price: 90 }] },
       { id: "s7", name: "Vegetable Cheese", category: "sandwiches", variants: [{ name: "Plain", price: 90 }, { name: "Grill", price: 100 }] },
       { id: "s8", name: "Aloo Mutter Cheese", category: "sandwiches", variants: [{ name: "Plain", price: 90 }, { name: "Grill", price: 100 }] },
@@ -41,14 +42,14 @@ export const menuData: MenuCategory[] = [
       { id: "cs6", name: "Tandoori Paneer Club", category: "club-sandwiches", price: 149 },
       { id: "cs7", name: "Mexican Club", category: "club-sandwiches", price: 149 },
       { id: "cs8", name: "Peri Peri Club Sand.", category: "club-sandwiches", price: 159 },
-      { id: "cs9", name: "Pizza Club Sand.", category: "club-sandwiches", price: 199 },
+      { id: "cs9", name: "Pizza Club Sand.", category: "club-sandwiches", price: 199, tag: "Must Try" },
     ],
   },
   {
     id: "burgers",
     name: "Burgers",
     items: [
-      { id: "b1", name: "Aloo Tikki Burger", category: "burgers", variants: [{ name: "Aloo Tikki", price: 65 }, { name: "Paneer Tikki", price: 95 }] },
+      { id: "b1", name: "Aloo Tikki Burger", category: "burgers", variants: [{ name: "Aloo Tikki", price: 65 }, { name: "Paneer Tikki", price: 95 }], tag: "Bestseller" },
       { id: "b2", name: "Veg. Delight Burger", category: "burgers", variants: [{ name: "Aloo Tikki", price: 70 }, { name: "Paneer Tikki", price: 100 }] },
       { id: "b3", name: "Really Spicy Burger", category: "burgers", variants: [{ name: "Aloo Tikki", price: 70 }, { name: "Paneer Tikki", price: 100 }] },
       { id: "b4", name: "Peri Peri Burger", category: "burgers", variants: [{ name: "Aloo Tikki", price: 70 }, { name: "Paneer Tikki", price: 100 }] },
@@ -62,13 +63,13 @@ export const menuData: MenuCategory[] = [
     id: "pizza",
     name: "Pizza",
     items: [
-      { id: "p1", name: "Margherita", description: "Mozzarella Cheese, Tomato", category: "pizza", variants: [{ name: '6"', price: 119 }, { name: '8"', price: 199 }, { name: '12"', price: 299 }] },
+      { id: "p1", name: "Margherita", description: "Mozzarella Cheese, Tomato", category: "pizza", variants: [{ name: '6"', price: 119 }, { name: '8"', price: 199 }, { name: '12"', price: 299 }], tag: "Trending" },
       { id: "p2", name: "American Cheese Corn", description: "Sweet and Juicy Golden Corn", category: "pizza", variants: [{ name: '6"', price: 129 }, { name: '8"', price: 219 }, { name: '12"', price: 319 }] },
       { id: "p3", name: "Double Cheese Pizza", description: "Extra Mozzarella Cheese", category: "pizza", variants: [{ name: '6"', price: 139 }, { name: '8"', price: 229 }, { name: '12"', price: 349 }] },
       { id: "p4", name: "Ahmedabadi Touch Pizza", description: "Onion, Capsicum, Olives", category: "pizza", variants: [{ name: '6"', price: 139 }, { name: '8"', price: 229 }, { name: '12"', price: 369 }] },
       { id: "p5", name: "Tandoori Paneer", description: "Tandoori Sauce, Paneer, Capsicum, Onion", category: "pizza", variants: [{ name: '6"', price: 139 }, { name: '8"', price: 229 }, { name: '12"', price: 369 }] },
       { id: "p6", name: "Mexican Pizza", description: "Onion, Capsicum, Corn, Mexican Beans", category: "pizza", variants: [{ name: '6"', price: 139 }, { name: '8"', price: 249 }, { name: '12"', price: 389 }] },
-      { id: "p7", name: "Sp. Food Town Pizza", description: "Onion, Corn, Masala Paneer, Capsicum, Chilli", category: "pizza", variants: [{ name: '6"', price: 159 }, { name: '8"', price: 259 }, { name: '12"', price: 419 }] },
+      { id: "p7", name: "Sp. Food Town Pizza", description: "Onion, Corn, Masala Paneer, Capsicum, Chilli", category: "pizza", variants: [{ name: '6"', price: 159 }, { name: '8"', price: 259 }, { name: '12"', price: 419 }], tag: "Must Try" },
     ],
   },
   {

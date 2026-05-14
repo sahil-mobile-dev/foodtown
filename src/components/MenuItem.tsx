@@ -34,9 +34,16 @@ const MenuItem = ({ item }: MenuItemProps) => {
     <div className="group bg-card rounded-lg p-4 border border-border hover:border-primary/30 transition-all duration-300 card-hover">
       <div className="flex justify-between items-start gap-3">
         <div className="flex-1">
-          <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
-            {item.name}
-          </h4>
+          <div className="flex items-center gap-2">
+            <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+              {item.name}
+            </h4>
+            {item.tag && (
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/20">
+                {item.tag}
+              </span>
+            )}
+          </div>
           {item.description && (
             <p className="text-sm text-muted-foreground mt-1">{item.description}</p>
           )}

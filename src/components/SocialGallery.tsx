@@ -107,7 +107,7 @@ const SocialGallery = () => {
               className="border-pink-500/50 text-pink-500 hover:bg-pink-500/10 hover:border-pink-500"
               asChild
             >
-              <a href="https://instagram.com/foodtown" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/food_town_10/" target="_blank" rel="noopener noreferrer">
                 <Instagram className="w-5 h-5 mr-2" />
                 Follow on Instagram
               </a>
@@ -182,7 +182,7 @@ const SocialGallery = () => {
             className="border-primary/30 hover:border-primary hover:bg-primary/10"
             asChild
           >
-            <a href="https://instagram.com/foodtown" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/food_town_10/" target="_blank" rel="noopener noreferrer">
               <ExternalLink className="w-4 h-4 mr-2" />
               View More on Instagram
             </a>

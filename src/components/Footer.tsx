@@ -15,7 +15,9 @@ const Footer = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/food_town_10/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-all"
               >
                 <Instagram className="w-5 h-5" />
@@ -42,11 +44,11 @@ const Footer = () => {
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <Clock className="w-5 h-5 text-primary" />
-                11:00 AM - 03:00 AM
+                11:00 AM - 03:00 AM (Late Night Service)
               </div>
               <div className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span>Food Town, Your Neighborhood, City</span>
+                <span>Shop No 10 Kamlesh Park 1, Jivraj Park, Ahmedabad</span>
               </div>
             </div>
           </div>

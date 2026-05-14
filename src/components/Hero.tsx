@@ -24,15 +24,15 @@ const Hero = () => {
 
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Delicious Food
+            Food Town
             <br />
-            <span className="gradient-text">Delivered Fast</span>
+            <span className="gradient-text">Late Night Cravings?</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            From crispy sandwiches to cheesy pizzas, fresh burgers to refreshing mojitos —
-            your favorite food is just a click away!
+            Serving Ahmedabad's favorite street food from 11:00 AM to 03:00 AM. 
+            Fresh burgers, cheesy pizzas, and cooling mojitos delivered to your doorstep!
           </p>
 
           {/* CTA Buttons */}
