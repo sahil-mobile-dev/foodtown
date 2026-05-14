@@ -89,21 +89,39 @@ Thank you for ordering!`;
     return encodeURIComponent(message);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
 
-    const phoneNumber = "918488921001";
-    const message = generateWhatsAppMessage();
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    try {
+      // 1. Save to Firestore
+      const { addDoc, collection, serverTimestamp } = await import("firebase/firestore");
+      const { db } = await import("@/lib/firebase");
 
-    window.open(whatsappUrl, "_blank");
-    clearCart();
-    onClose();
-    toast.success("Order sent to WhatsApp! We'll confirm shortly.");
+      await addDoc(collection(db, "orders"), {
+        ...formData,
+        items,
+        totalPrice,
+        status: "pending",
+        createdAt: serverTimestamp(),
+      });
+
+      // 2. Redirect to WhatsApp
+      const phoneNumber = "918488921001";
+      const message = generateWhatsAppMessage();
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      window.open(whatsappUrl, "_blank");
+      clearCart();
+      onClose();
+      toast.success("Order saved and sent to WhatsApp!");
+    } catch (error) {
+      console.error("Error saving order:", error);
+      toast.error("Failed to save order. Please try again.");
+    }
   };
 
   return (
